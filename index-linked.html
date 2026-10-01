@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>My Great Project — Image Links</title>
+
+
+		<link rel="stylesheet" href="dist/reveal.css" />
+		<link rel="stylesheet" href="assets/mouse-trail/linked-trail.css" />
+		<link rel="stylesheet" href="dist/theme/white.css" />
+		<link rel="stylesheet" href="dist/reset.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=BioRhyme:wght@200..800&family=Boldonse&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Global text font */
+    --r-main-font: 'Antonio', sans-serif;
+    /* Heading font (defaults to --r-main-font if not set) */
+    --r-heading-font: 'Antonio', serif;
+    /* Code font */
+    --r-code-font: 'Antonio', monospace;
+  }
+  section[data-background-gradient] {
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+}
+h1{
+	background-color:rgba(238, 234, 229, 0.70);
+	padding-bottom:16px;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #006E51;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.container {
+  padding: 30px 0px;
+  position: relative;
+  background: inherit;
+  width: 50%;
+}
+
+.container.left {
+  left: 0;
+}
+
+.container.right {
+  left: 50%;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: calc(50% - 8px);
+  right: -8px;
+  background: #ffffff;
+  border: 2px solid #006E51;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.container.right::after {
+  left: -8px;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  top: calc(50% - 1px);
+  right: 8px;
+  background: #006E51;
+  z-index: 1;
+}
+
+.container.right::before {
+  left: 8px;
+}
+
+
+
+
+.container .icon {
+  position: absolute;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 9px 0;
+  top: calc(50% - 30px);
+  background: #F6D155;
+  border-radius: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #006E51;
+  z-index: 1;
+}
+
+.container.left .icon {
+  right: 56px;
+}
+
+.container.right .icon {
+  left: 56px;
+}
+
+.container .content {
+  padding: 30px 90px 30px 30px;
+  background: #F6D155;
+  position: relative;
+  border-radius: 0 500px 500px 0;
+}
+
+.container.right .content {
+  padding: 30px 30px 30px 90px;
+  border-radius: 500px 0 0 500px;
+}
+
+.container .content h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: normal;
+  color: #006E51;
+}
+
+.container .content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+}
+
+@media (max-width: 767.98px) {
+  .timeline::after {
+    left: 90px;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 120px;
+    padding-right: 30px;
+  }
+
+  .container.right {
+    left: 0%;
+  }
+
+  .container.left::after, 
+  .container.right::after {
+    left: 82px;
+  }
+
+  .container.left::before,
+  .container.right::before {
+    left: 100px;
+    border-color: transparent #006E51 transparent transparent;
+  }
+
+
+  .container.left .icon,
+  .container.right .icon {
+    right: auto;
+    left: 146px;
+  }
+
+  .container.left .content,
+  .container.right .content {
+    padding: 30px 30px 30px 90px;
+    border-radius: 500px 0 0 500px;
+  }
+}
+
+/* Shared grid areas let the background images overlap the centered title. */
+.reveal .slides section.offset-images-slide {
+  padding: 0;
+}
+.reveal .offset-images-stage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(20, minmax(0, 1fr));
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+}
+.reveal .offset-images-stage h1 {
+  grid-area: 1 / 1 / -1 / -1;
+  z-index: 1;
+  width: 90%;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(24px, min(6vw, 12vh), 100px);
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+.reveal .offset-images-stage img {
+  z-index: 0;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.reveal .offset-images-stage .offset-image-left {
+  grid-area: 5 / 2 / 18 / 6;
+  place-self: start;
+  width: 300px;
+}
+.reveal .offset-images-stage .offset-image-right-bottom {
+  grid-area: 1 / 8 / 20 / 12;
+  place-self: end;
+  width: 450px;
+}
+.reveal .offset-images-stage .offset-image-right-top {
+  grid-area: 1 / 8 / 10 / 12;
+  place-self: end;
+  width: 450px;
+}
+</style>
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section class="linked-intro" data-background-color="#eeeae5" id="image-trail-slide">
+  <div class="linked-intro-stage">
+    <nav aria-label="Explore this project and design resources">
+      <a class="linked-image" href="#project-process" style="--x: 4%; --y: 7%"><img src="#project-timeline" alt=""><span>MindAnchor </span></a>
+      <a class="linked-image" href="https://www.behance.net/gallery/236634581/School-Typography-Project" style="--x: 36%; --y: 7%"><img src="assets/mouse-trail/image-01.webp" alt=""><span>Hump Fest (Behance)</span></a>
+      <a class="linked-image" href="#project-process" target="_blank" style="--x: 68%; --y: 7%"><img src="assets/mouse-trail/image-02.webp" alt=""><span>Eco-Pilot →</span></a>
+      <a class="linked-image" href="#project-timeline" target="_blank" rel="noopener noreferrer" aria-label="Mind Anchor (Figma)" style="--x: 4%; --y: 25%"><img src="assets/mouse-trail/image-03.webp" alt=""><spam>Flora Coffee</spam> </span></a>
+      <a class="linked-image" href="file:///Users/kyleverrette/Desktop/reveal.js/index.html" target="_blank" target="_blank" rel="noopener noreferrer" aria-label="Learn HTML &amp; CSS (opens in a new tab)" style="--x: 68%; --y: 66%"><img src="assets/mouse-trail/image-05.webp" alt=""><span>Photography</span></a>
+    </nav>
+    <div class="linked-intro-heading">
+      <h1>My Resume</h1>
+      <p>UX/UI, Interaction Design, and Prototyping</p>
+    </div>
+  </div>
+</section>
+					<section id="project-timeline" data-transition="zoom-in fade-out" data-background-color="#eeeae5" data-auto-animate style="text-align:center; display: flex;flex-direction: column; justify-content: center;    align-items: center;">
+						 <a class="image04" href="#project-timeline" target="_blank" rel="noopener noreferrer" aria-label="Mind Anchor (Figma)" style="--x: 4%; --y: 25%"><img src="assets/mouse-trail/image-03.webp" alt=""><spam>App creation</spam> </span></a>
+						 </a>
+						 </a>
+						<div class="timeline">
+						<div class="container left">
+
+							<i class="icon fa fa-home"></i>
+							<div class="content">
+								<div id="content">
+								</div>
+							<p>
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-gift"></i>
+							<div class="content">
+							<img src= "Artboard 1-100.jpg">
+							<p>
+							</p>
+							</div>
+						</div>
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-user"></i>
+							<div class="content">
+							<img src= "Artboard 2-100.jpg">
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-running"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						</div>
+					</section>
+						<div class="timeline">
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-cog"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-certificate"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+							<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-cog"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-certificate"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						</div>
+					</section>
+					<section data-transition="zoom-in fade-out" data-background-color="#eeeae5" data-auto-animate style="text-align:center; display: flex;flex-direction: column; justify-content: center;    align-items: center;">
+						<div class="timeline">
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-home"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-gift"></i>
+							<div class="content">
+							<img src= "Artboard 3-100.jpg">
+							</p>
+							</div>
+						</div>
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-user"></i>
+							<div class="content">
+							<img src= "Artboard 4-100.jpg">
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-running"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						</div>
+					</section>
+					<section data-transition="zoom-in fade-out" data-background-color="hsla(65,81%,83%,0.5)" data-auto-animate style="text-align:center; display: flex;flex-direction: column; justify-content: center;    align-items: center;">
+						<div class="timeline">
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-home"></i>
+							<div class="content">
+
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-gift"></i>
+							<div class="content">
+							<img src= "10.jpg">
+							</p>
+							</div>
+						</div>
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-user"></i>
+							<div class="content">
+							<img src= "11.jpg">
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-running"></i>
+							<div class="content">
+
+							<p>
+							</p>
+							</div>
+						</div>
+						</div>
+					</section>
+					<section data-transition="zoom-in fade-out" data-background-color="#eeeae5" data-auto-animate style="text-align:center; display: flex;flex-direction: column; justify-content: center;    align-items: center;">
+						<div class="timeline">
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-home"></i>
+							<div class="content">
+
+							<p>
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-gift"></i>
+							<div class="content">
+
+							<p>
+]
+							</p>
+							</div>
+						</div>
+						<div class="container left">
+							<div class="date"></div>
+							<i class="icon fa fa-user"></i>
+							<div class="content">
+
+							<p>
+
+							</p>
+							</div>
+						</div>
+						<div class="container right">
+							<div class="date"></div>
+							<i class="icon fa fa-running"></i>
+							<div class="content">
+
+							<p>
+
+							</p>
+							</div>
+						</div>
+						</div>
+						<body>
+						<h1>App Design</h1>
+						<div class="floraslide"></div>
+						<div id="floraslide"></div>
+							<div class="carousel"></div>
+							<div class="group">
+								<div id="carousel"></div>
+							    <div class="card"><img src="1.jpg"></div> 
+							    <div class="card"><img src="2.jpg"></div> 
+  							    <div class="card"><img src="3.jpg"></div> 
+ 						        <div class="card"><img src="6.jpg"></div> 
+  								<div class="card"><img src="7.jpg"></div> 
+							</div>
+								<div aria-hidden class="group">
+							    <div class="card"><img src="1.jpg"></div> 
+							    <div class="card"><img src="2.jpg"></div> 
+  							    <div class="card"><img src="3.jpg"></div> 
+ 						        <div class="card"><img src="6.jpg"></div> 
+  								<div class="card"><img src="7.jpg"></div> 
+								</div>
+						</body>
+					</section>
+						<section id="project-process" data-auto-animate data-background=" data-background-size="_contain"></section>
+						</div>
+					</section>
+										</section>
+					<section data-auto-animate data-background-color="#eeeae5">
+						<h1>Some text</h1>
+					</section>					
+					<section data-auto-animate data-background-color="hsla(65,81%,83%,0.5)">
+						<h1>Some text</h1><h2>Which includes a message</h2>
+					</section>
+					<section data-auto-animate data-background-color="hsla(65,81%,83%,0.5)">
+						<h1>Some text</h1><h2>Which includes a message</h2>And an emphasis
+					</section>
+					<section data-auto-animate data-background-color="#eeeae5">
+						  <div class="r-stack">
+							<h1>Some text with stacked images</h1>
+   						  	<img data-src="1.gif" class="fragment" width="300" height="auto">
+    					  	<img data-src="2.gif" class="fragment" width="450" height="auto">
+ 						  </div>
+					</section>
+					<section id="project-gallery" class="offset-images-slide" data-background-color="#eeeae5">
+						<div class="offset-images-stage">
+							<img src="1.gif" class="offset-image-left" width="300" alt="" aria-hidden="true">
+							<img src="3.gif" class="offset-image-right-top" width="450" alt="" aria-hidden="true">
+							<img src="2.gif" class="offset-image-right-bottom" width="450" alt="" aria-hidden="true">
+							<h1>Some text with stacked images</h1>
+						</div>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="dist/plugin/notes.js"></script>
+		<script src="dist/plugin/markdown.js"></script>
+		<script src="dist/plugin/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				view: 'scroll',
+    			scrollLayout: 'full',
+				width: '100%',
+    			height: '100%',
+    			margin: 0,
+    			minScale: 0.2,
+   				maxScale: 2.0,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			});
+		</script>
+		<script src="assets/mouse-trail/images.js"></script>
+		<script src="assets/mouse-trail/linked-trail.js"></script>
+		<div class="reveal" data-scroll-snap="false">
+    </div>
+</div>
+	</body>
+	
+</html>
